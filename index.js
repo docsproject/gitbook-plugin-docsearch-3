@@ -8,8 +8,8 @@ module.exports = {
     book: {
         assets: './assets',
         js: [
-            'doc-search-lib.js',
-            'doc-search.js'
+             'doc-search-lib.js',
+             'doc-search.js'
         ],
         css: [
             'doc-search.css'
@@ -32,46 +32,6 @@ module.exports = {
             }
 
             return page;
-        },
-
-        "finish": function () {
-            var $, $el, html;
-            var logo;
-            var pathFile = this.options.pluginsConfig.docSearch.apiKey && this.options.pluginsConfig.docSearch.index;
-            if(pathFile){
-
-                var searchBox = '<div id="book-search-input">\n' +
-                    '    <input type="text" id="book-doc-search-input" placeholder="Type to search">\n' +
-                    '</div>';
-
-                if (this.options.pluginsConfig.docSearch.logo) {
-
-                    if (this.options.pluginsConfig.docSearch.brandUrl) {
-                        logo = '<a href="'+this.options.pluginsConfig.docSearch.brandUrl+'">' +
-                            ' <img class="logo" src="/'+this.options.pluginsConfig.docSearch.logo+'"/>'+
-                            '</a>';
-                    }
-                    else {
-                        logo = '<img class="logo" src="/'+this.options.pluginsConfig.docSearch.logo+'"/>';
-                    }
-                }
-
-                urls.forEach(item => {
-                    html = fs.readFileSync(item.url, {encoding: 'utf-8'});
-                    $ = cheerio.load(html);
-
-                    if ($('#book-search-input').length === 0) {
-                        $el = $('.book-summary');
-                        $el.prepend(searchBox);
-                        if (logo) {
-                            $el.prepend(logo);
-                        }
-                    }
-
-                fs.writeFileSync(item.url, $.root().html(), {encoding: 'utf-8'});
-            });
-            }
-
         }
     }
 }
