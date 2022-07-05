@@ -4,7 +4,7 @@ require(["gitbook"], function(gitbook) {
         var cfg = pluginsConfig.docSearch;
         docsearch({
             apiKey: cfg.apiKey,
-            appId: cfg.appId
+            appId: cfg.appId,
             indexName: cfg.index,
             container: '#book-search-input',
             debug: false
