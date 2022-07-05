@@ -4,8 +4,9 @@ require(["gitbook"], function(gitbook) {
         var cfg = pluginsConfig.docSearch;
         docsearch({
             apiKey: cfg.apiKey,
+            appId: cfg.appId
             indexName: cfg.index,
-            inputSelector: '#book-doc-search-input',
+            container: '#book-search-input',
             debug: false
         });
     }
